@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace NZWalks.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
@@ -27,6 +27,6 @@ public class WeatherForecastController : ControllerBase
                 TemperatureC = Random.Shared.Next(-20, 55),
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
-            .ToArray();
+            .ToArray();    
     }
 }
