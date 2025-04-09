@@ -1,16 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace NZWalks.API.Controllers
+namespace NZWalks.API.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class StudentsController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class StudentsController : ControllerBase
+    [HttpGet(Name = "GetAllStudents")]
+    public IActionResult GetAllStudents()
     {
-        [HttpGet(Name = "GetAllStudents")]
-        public IActionResult GetAllStudents()
-        {
-            string[] studentNames = new string[] { "John", "Vlad", "Zakhar" };
-            return Ok(studentNames);
-        }
+        string[] studentNames = new string[] { "John", "Vlad", "Zakhar" };
+        return Ok(studentNames);
     }
 }

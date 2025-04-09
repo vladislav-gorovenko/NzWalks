@@ -1,8 +1,6 @@
-using System.ComponentModel.DataAnnotations.Schema;
+namespace NZWalks.API.Models.DTOs;
 
-namespace NZWalks.API.Models.Domain;
-
-public class Region
+public class RegionDto
 {
     public Guid Id { get; set; }
     public required string Code { get; set; }

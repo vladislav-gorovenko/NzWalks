@@ -1,10 +1,7 @@
-using System.ComponentModel.DataAnnotations.Schema;
+namespace NZWalks.API.Models.DTOs;
 
-namespace NZWalks.API.Models.Domain;
-
-public class Region
+public class UpdateRegionRequestDto
 {
-    public Guid Id { get; set; }
     public required string Code { get; set; }
     public required string Name { get; set; }
     public string? RegionImageUrl { get; set; }
