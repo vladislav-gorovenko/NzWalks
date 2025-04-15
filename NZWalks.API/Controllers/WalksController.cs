@@ -1,4 +1,5 @@
 using AutoMapper;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using NZWalks.API.Models.Domain;
 using NZWalks.API.Models.DTOs;
@@ -12,11 +13,14 @@ public class WalksController : ControllerBase
 {
     private readonly IWalkRepository _walkRepository;
     private readonly IMapper _mapper;
+    private readonly IValidator<AddWalkRequestDTO> _addWalkRequestValidator;
 
-    public WalksController(IWalkRepository walkRepository, IMapper mapper)
+    public WalksController(IWalkRepository walkRepository, IMapper mapper,
+        IValidator<AddWalkRequestDTO> addWalkRequestValidator)
     {
         _walkRepository = walkRepository;
         _mapper = mapper;
+        _addWalkRequestValidator = addWalkRequestValidator;
     }
 
     // GET ALL WALKS 
@@ -67,7 +71,7 @@ public class WalksController : ControllerBase
 
         return Ok(walkDto);
     }
-    
+
     // DELETE WALK
     [HttpDelete]
     [Route("{id:Guid}")]
@@ -75,7 +79,7 @@ public class WalksController : ControllerBase
     {
         var deletedWalk = await _walkRepository.DeleteAsync(id);
         if (deletedWalk == null) return NotFound();
-        
+
         return NoContent();
     }
 }
