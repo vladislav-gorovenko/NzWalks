@@ -1,7 +1,10 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using NZWalks.API.Data;
 using NZWalks.API.Mappings;
 using NZWalks.API.Repositaries;
+using NZWalks.API.Validators.Walk;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,9 @@ builder.Services.AddScoped<IRegionRepository, SQLRegionRepository>();
 builder.Services.AddScoped<IWalkRepository, SQLWalkRepository>();
 builder.Services.AddAutoMapper(typeof(WalkAutoMapper));
 builder.Services.AddAutoMapper(typeof(RegionAutoMapper));
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<AddWalkRequestValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<UpdateWalkRequestValidator>();
 
 var app = builder.Build();
 
