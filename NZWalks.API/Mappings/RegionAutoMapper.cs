@@ -4,9 +4,9 @@ using NZWalks.API.Models.DTOs;
 
 namespace NZWalks.API.Mappings;
 
-public class AutoMapperProfiles: Profile
+public class RegionAutoMapper: Profile
 {
-    public AutoMapperProfiles()
+    public RegionAutoMapper()
     {
         CreateMap<RegionDto, Region>()
             // .ForMember(x => x.RegionImageUrl, opt => opt.MapFrom(x => x.RegionImageUrl))
@@ -19,6 +19,4 @@ public class AutoMapperProfiles: Profile
         CreateMap<UpdateRegionRequestDto, Region>()
             .ReverseMap();
     }
-    
-    
 }

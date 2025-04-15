@@ -9,6 +9,6 @@ public interface IRegionRepository
      Task<List<Region>> GetAllAsync();
      Task<Region?> GetByIdAsync(Guid id);
      Task<Region> CreateAsync(Region regionDomain);
-     Task<Region?> UpdateAsync(Guid id, UpdateRegionRequestDto regionDto);
+     Task<Region?> UpdateAsync(Guid id, Region regionDomain);
      Task<Region?> DeleteAsync(Guid id);
 }
