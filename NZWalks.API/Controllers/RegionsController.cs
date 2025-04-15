@@ -59,10 +59,11 @@ public class RegionsController : ControllerBase
     public async Task<IActionResult> Update([FromBody] UpdateRegionRequestDto updateRegionRequestDto,
         [FromRoute] Guid id)
     {
-        var regionDomain = await _regionRepository.UpdateAsync(id, updateRegionRequestDto);
-        if (regionDomain == null) return NotFound();
+        var regionDomain = _mapper.Map<Region>(updateRegionRequestDto);
+        var currentRegion = await _regionRepository.UpdateAsync(id, regionDomain);
+        if (currentRegion == null) return NotFound();
         
-        var regionDto = _mapper.Map<RegionDto>(regionDomain);
+        var regionDto = _mapper.Map<RegionDto>(currentRegion);
 
         return Ok(regionDto);
     }
@@ -72,7 +73,8 @@ public class RegionsController : ControllerBase
     [Route("{id:Guid}")]
     public async Task<IActionResult> Delete([FromRoute] Guid id)
     {
-        await _regionRepository.DeleteAsync(id);
+        var deletedRegion = await _regionRepository.DeleteAsync(id);
+        if (deletedRegion == null) return NotFound();
         
         return NoContent();
     }

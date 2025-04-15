@@ -31,18 +31,18 @@ public class SQLRegionRepository : IRegionRepository
         return regionDomain;
     }
 
-    public async Task<Region?> UpdateAsync(Guid id, UpdateRegionRequestDto regionDto)
+    public async Task<Region?> UpdateAsync(Guid id, Region regionDomain)
     {
-        var regionDomain = await _dbContext.Regions.FirstOrDefaultAsync(x => x.Id == id);
-        if (regionDomain == null) return null;
+        var currentRegion = await _dbContext.Regions.FirstOrDefaultAsync(x => x.Id == id);
+        if (currentRegion == null) return null;
 
-        regionDomain.Name = regionDto.Name;
-        regionDomain.RegionImageUrl = regionDto.RegionImageUrl;
-        regionDomain.Code = regionDto.Code;
+        currentRegion.Name = regionDomain.Name;
+        currentRegion.RegionImageUrl = regionDomain.RegionImageUrl;
+        currentRegion.Code = regionDomain.Code;
 
         await _dbContext.SaveChangesAsync();
 
-        return regionDomain;
+        return currentRegion;
     }
 
     public async Task<Region?> DeleteAsync(Guid id)
