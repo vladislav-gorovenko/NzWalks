@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using NZWalks.API.Data;
-using NZWalks.API.Models.Domain;
+using NZWalks.Core.Models.Domain;
 
-namespace NZWalks.API.Repositaries;
+namespace NZWalks.API.Repositaries.Walks;
 
 public class SQLWalkRepository : IWalkRepository
 {

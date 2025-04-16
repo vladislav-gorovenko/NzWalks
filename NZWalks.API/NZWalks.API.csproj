@@ -21,4 +21,8 @@
         <PackageReference Include="Swashbuckle.AspNetCore"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\NZWalks.Core\NZWalks.Core.csproj"/>
+    </ItemGroup>
+
 </Project>
