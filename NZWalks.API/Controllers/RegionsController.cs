@@ -21,11 +21,12 @@ public class RegionsController : ControllerBase
 
     // GET ALL REGIONS
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
+        [FromQuery] string? sortBy, [FromQuery] bool? isDescending, [FromQuery] int? skip, [FromQuery] int? top)
     {
-        var regionsDomain = await _regionRepository.GetAllAsync();
+        var regionsDomain = await _regionRepository.GetAllAsync(filterOn, filterQuery, sortBy, isDescending, skip, top);
         var regionsDto = _mapper.Map<List<RegionDto>>(regionsDomain);
-        
+
         return Ok(regionsDto);
     }
 
@@ -38,7 +39,7 @@ public class RegionsController : ControllerBase
         if (regionDomain == null) return NotFound();
 
         var regionDto = _mapper.Map<RegionDto>(regionDomain);
-        
+
         return Ok(regionDto);
     }
 
@@ -48,7 +49,7 @@ public class RegionsController : ControllerBase
     {
         var regionDomain = _mapper.Map<Region>(addRegionRequestDto);
         regionDomain = await _regionRepository.CreateAsync(regionDomain);
-        
+
         var regionDto = _mapper.Map<RegionDto>(regionDomain);
         return CreatedAtAction(nameof(GetById), new { id = regionDomain.Id }, regionDto);
     }
@@ -62,7 +63,7 @@ public class RegionsController : ControllerBase
         var regionDomain = _mapper.Map<Region>(updateRegionRequestDto);
         var currentRegion = await _regionRepository.UpdateAsync(id, regionDomain);
         if (currentRegion == null) return NotFound();
-        
+
         var regionDto = _mapper.Map<RegionDto>(currentRegion);
 
         return Ok(regionDto);
@@ -75,7 +76,7 @@ public class RegionsController : ControllerBase
     {
         var deletedRegion = await _regionRepository.DeleteAsync(id);
         if (deletedRegion == null) return NotFound();
-        
+
         return NoContent();
     }
 }

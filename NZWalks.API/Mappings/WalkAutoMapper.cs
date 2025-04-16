@@ -4,7 +4,7 @@ using NZWalks.API.Models.DTOs;
 
 namespace NZWalks.API.Mappings;
 
-public class WalkAutoMapper: Profile
+public class WalkAutoMapper : Profile
 {
     public WalkAutoMapper()
     {

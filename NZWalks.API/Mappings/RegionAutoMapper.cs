@@ -4,7 +4,7 @@ using NZWalks.API.Models.DTOs;
 
 namespace NZWalks.API.Mappings;
 
-public class RegionAutoMapper: Profile
+public class RegionAutoMapper : Profile
 {
     public RegionAutoMapper()
     {
