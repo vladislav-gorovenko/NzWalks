@@ -12,7 +12,8 @@ public class AddWalkRequestValidator : AbstractValidator<AddWalkRequestDTO>
         RuleFor(x => x.LengthInKm).NotEmpty().GreaterThan(0);
         RuleFor(x => x.WalkImageUrl)
             .Must(uri => string.IsNullOrEmpty(uri) || Uri.TryCreate(uri, UriKind.Absolute, out _))
-            .When(x => !string.IsNullOrEmpty(x.WalkImageUrl)).WithMessage("The field shall be either empty or valid URL");
+            .When(x => !string.IsNullOrEmpty(x.WalkImageUrl))
+            .WithMessage("The field shall be either empty or valid URL");
         RuleFor(x => x.RegionId).NotEmpty();
         RuleFor(x => x.DifficultyId).NotEmpty();
     }

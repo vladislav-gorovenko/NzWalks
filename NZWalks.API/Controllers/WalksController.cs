@@ -25,9 +25,10 @@ public class WalksController : ControllerBase
 
     // GET ALL WALKS 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
+        [FromQuery] string? sortBy, [FromQuery] bool? isDescending, [FromQuery] int? skip, [FromQuery] int? top)
     {
-        var walkDomain = await _walkRepository.GetAllAsync();
+        var walkDomain = await _walkRepository.GetAllAsync(filterOn, filterQuery, sortBy, isDescending, skip, top);
         var walksDto = _mapper.Map<List<WalkDto>>(walkDomain);
 
         return Ok(walksDto);
