@@ -1,5 +1,5 @@
 using FluentValidation;
-using NZWalks.API.Models.DTOs;
+using NZWalks.Core.Models.DTOs.Walk;
 
 namespace NZWalks.API.Validators.Walk;
 

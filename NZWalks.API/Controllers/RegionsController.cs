@@ -1,8 +1,8 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using NZWalks.API.Models.Domain;
-using NZWalks.API.Models.DTOs;
-using NZWalks.API.Repositaries;
+using NZWalks.API.Repositaries.Regions;
+using NZWalks.Core.Models.Domain;
+using NZWalks.Core.Models.DTOs.Region;
 
 namespace NZWalks.API.Controllers;
 

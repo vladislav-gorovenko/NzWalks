@@ -1,9 +1,8 @@
 using AutoMapper;
-using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
-using NZWalks.API.Models.Domain;
-using NZWalks.API.Models.DTOs;
-using NZWalks.API.Repositaries;
+using NZWalks.API.Repositaries.Walks;
+using NZWalks.Core.Models.Domain;
+using NZWalks.Core.Models.DTOs.Walk;
 
 namespace NZWalks.API.Controllers;
 
@@ -13,14 +12,11 @@ public class WalksController : ControllerBase
 {
     private readonly IWalkRepository _walkRepository;
     private readonly IMapper _mapper;
-    private readonly IValidator<AddWalkRequestDTO> _addWalkRequestValidator;
 
-    public WalksController(IWalkRepository walkRepository, IMapper mapper,
-        IValidator<AddWalkRequestDTO> addWalkRequestValidator)
+    public WalksController(IWalkRepository walkRepository, IMapper mapper)
     {
         _walkRepository = walkRepository;
         _mapper = mapper;
-        _addWalkRequestValidator = addWalkRequestValidator;
     }
 
     // GET ALL WALKS 
@@ -49,7 +45,7 @@ public class WalksController : ControllerBase
 
     // CREATE NEW WALKS 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] AddWalkRequestDTO addWalkRequestDTO)
+    public async Task<IActionResult> Create([FromBody] AddWalkRequestDto addWalkRequestDTO)
     {
         var walkDomain = _mapper.Map<Walk>(addWalkRequestDTO);
         walkDomain = await _walkRepository.CreateAsync(walkDomain);

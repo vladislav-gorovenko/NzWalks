@@ -1,14 +1,14 @@
 using AutoMapper;
-using NZWalks.API.Models.Domain;
-using NZWalks.API.Models.DTOs;
+using NZWalks.Core.Models.Domain;
+using NZWalks.Core.Models.DTOs.Walk;
 
-namespace NZWalks.API.Mappings;
+namespace NZWalks.Core.Mapping;
 
-public class WalkAutoMapper : Profile
+public class WalkProfile : Profile
 {
-    public WalkAutoMapper()
+    public WalkProfile()
     {
-        CreateMap<Walk, AddWalkRequestDTO>().ReverseMap();
+        CreateMap<Walk, AddWalkRequestDto>().ReverseMap();
         CreateMap<Walk, UpdateWalkRequestDto>().ReverseMap();
         CreateMap<Walk, WalkDto>()
             .ForMember(x => x.DifficultyName,

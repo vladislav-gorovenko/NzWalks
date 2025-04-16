@@ -1,6 +1,6 @@
-using NZWalks.API.Models.Domain;
+using NZWalks.Core.Models.Domain;
 
-namespace NZWalks.API.Repositaries;
+namespace NZWalks.API.Repositaries.Walks;
 
 public interface IWalkRepository
 {

@@ -1,12 +1,12 @@
 using AutoMapper;
-using NZWalks.API.Models.Domain;
-using NZWalks.API.Models.DTOs;
+using NZWalks.Core.Models.Domain;
+using NZWalks.Core.Models.DTOs.Region;
 
-namespace NZWalks.API.Mappings;
+namespace NZWalks.Core.Mapping;
 
-public class RegionAutoMapper : Profile
+public class RegionProfile : Profile
 {
-    public RegionAutoMapper()
+    public RegionProfile()
     {
         CreateMap<RegionDto, Region>()
             // .ForMember(x => x.RegionImageUrl, opt => opt.MapFrom(x => x.RegionImageUrl))
