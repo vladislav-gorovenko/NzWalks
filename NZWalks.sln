@@ -2,6 +2,17 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NZWalks.API", "NZWalks.API\NZWalks.API.csproj", "{173A8B95-D546-48E9-BCD4-F7FF41A380B9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{58F41F2F-3D6D-4F2B-ABF9-551006CB896A}"
+	ProjectSection(SolutionItems) = preProject
+		NZWalks.http = NZWalks.http
+		README.md = README.md
+		Directory.Packages.props = Directory.Packages.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9D482313-B23E-4466-A6C1-4B194002922D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2FB02060-B447-4D7A-A6E4-2986A2A1C359}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +23,8 @@ Global
 		{173A8B95-D546-48E9-BCD4-F7FF41A380B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{173A8B95-D546-48E9-BCD4-F7FF41A380B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{173A8B95-D546-48E9-BCD4-F7FF41A380B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{173A8B95-D546-48E9-BCD4-F7FF41A380B9} = {9D482313-B23E-4466-A6C1-4B194002922D}
 	EndGlobalSection
 EndGlobal
