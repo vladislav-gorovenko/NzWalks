@@ -22,6 +22,7 @@ builder.Services.AddAutoMapper(typeof(RegionProfile));
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<AddWalkRequestValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<UpdateWalkRequestValidator>();
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
 var app = builder.Build();
 
