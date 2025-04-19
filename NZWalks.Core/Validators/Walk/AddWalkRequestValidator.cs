@@ -1,7 +1,7 @@
 using FluentValidation;
 using NZWalks.Core.Models.DTOs.Walk;
 
-namespace NZWalks.API.Validators.Walk;
+namespace NZWalks.Core.Validators.Walk;
 
 public class AddWalkRequestValidator : AbstractValidator<AddWalkRequestDto>
 {
