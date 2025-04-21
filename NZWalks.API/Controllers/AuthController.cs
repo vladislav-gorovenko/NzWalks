@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.JsonWebTokens;
@@ -182,7 +183,7 @@ public class AuthController : ControllerBase
             var newAccessToken = _tokenService.GenerateAccessToken(principal.Claims);
             var newRefreshToken = _tokenService.GenerateRefreshToken();
 
-            tokenInfo.RefreshToken = newRefreshToken; 
+            tokenInfo.RefreshToken = newRefreshToken;
             await _context.SaveChangesAsync();
 
             return Ok(new RefreshTokenRequestDto
@@ -191,6 +192,31 @@ public class AuthController : ControllerBase
                 RefreshToken = newRefreshToken
             });
         }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex.Message);
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+    }
+
+    [HttpPost("token/revoke")]
+    [Authorize]
+    public async Task<IActionResult> Revoke()
+    {
+        try
+        {
+            var username = User.Identity.Name;
+
+            var user = _context.TokenInfos.SingleOrDefault(u => u.Username == username);
+            if (user == null)
+            {
+                return BadRequest("Invalid refresh token. Please login again.");
+            }
+
+            user.RefreshToken = string.Empty;
+            await _context.SaveChangesAsync();
+            return Ok(true);
+        } 
         catch (Exception ex)
         {
             _logger.LogError(ex.Message);
