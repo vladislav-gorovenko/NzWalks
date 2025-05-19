@@ -1,9 +1,7 @@
-namespace NZWalks.Core.Models.Domain;
+namespace NZWalks.Domain.Models;
 
-public class Walk
+public class Walk : BaseEntity<Guid>
 {
-    public Guid Id { get; set; }
-    public required string Name { get; set; }
     public required string Description { get; set; }
     public required double LengthInKm { get; set; }
 

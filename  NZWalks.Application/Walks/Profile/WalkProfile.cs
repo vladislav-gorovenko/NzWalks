@@ -1,10 +1,9 @@
-using AutoMapper;
-using NZWalks.Core.Models.Domain;
 using NZWalks.Core.Models.DTOs.Walk;
+using NZWalks.Domain.Models;
 
-namespace NZWalks.Core.Mapping;
+namespace NZWalks.Application.Walks.Profile;
 
-public class WalkProfile : Profile
+public class WalkProfile : AutoMapper.Profile
 {
     public WalkProfile()
     {
