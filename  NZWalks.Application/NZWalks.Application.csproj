@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <RootNamespace>NZWalks.Application</RootNamespace>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Difficulties\Commands\" />
+      <Folder Include="Difficulties\Mappers\" />
+      <Folder Include="Difficulties\Queries\" />
+      <Folder Include="Difficulties\Repositories\" />
+      <Folder Include="Difficulties\Validators\" />
+      <Folder Include="Regions\Validators\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" />
+      <PackageReference Include="FluentValidation" />
+      <PackageReference Include="MediatR" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\NZWalks.Domain\NZWalks.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
