@@ -1,6 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using NZWalks.Core.Models.Queries;
+using NZWalks.Application.Regions.Queries;
 
 namespace NZWalks.API.Controllers;
 

@@ -1,11 +1,14 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
-using NZWalks.API.Data;
-using NZWalks.API.Repositaries.Regions;
-using NZWalks.API.Repositaries.Walks;
-using NZWalks.API.Validators.Walk;
-using NZWalks.Core.Mapping;
+using NZWalks.Application.Regions.Mappers;
+using NZWalks.Application.Regions.Repositories;
+using NZWalks.Application.Walks.Mappers;
+using NZWalks.Application.Walks.Repositories;
+using NZWalks.Application.Walks.Validators;
+using NZWalks.Infrastructure.Data;
+using NZWalks.Infrastructure.Repositaries.Regions;
+using NZWalks.Infrastructure.Repositaries.Walks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,10 +18,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<NzWalksDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("NzWalksConnectionString")));
-builder.Services.AddScoped<IRegionRepository, SQLRegionRepository>();
-builder.Services.AddScoped<IWalkRepository, SQLWalkRepository>();
-builder.Services.AddAutoMapper(typeof(WalkProfile));
-builder.Services.AddAutoMapper(typeof(RegionProfile));
+builder.Services.AddScoped<IRegionRepository, RegionRepository>();
+builder.Services.AddScoped<IWalkRepository, WalkRepository>();
+builder.Services.AddAutoMapper(typeof(WalksMapper));
+builder.Services.AddAutoMapper(typeof(RegionsMapper));
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<AddWalkRequestValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<UpdateWalkRequestValidator>();
